@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width"/>
+
+<title>Monketech car</title>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<link rel="stylesheet" type="text/css" href="jquery.bxslider.css"/>
+<link rel="stylesheet" href="http://basehold.it/24">
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.keeptherhythm.js"></script>
+
+    <script type="text/javascript" src="js/jssor.js"></script>
+    <script type="text/javascript" src="js/jssor.slider.js"></script>
+	
+    <script type="text/javascript" src="js/jquery.bxslider.js"></script>
+	
+<script>
+	$(document).ready(function(){
+  $("#mobile-menu-toggle").click(function(){
+    $("#mobile-menu").toggle("200");
+  });
+  $('.bxslider').bxSlider({
+  pagerCustom: '#bx-pager'
+});
+  });
+    jssor_sliderb_starter = function (containerId) {
+            //Reference http://www.jssor.com/development/slider-with-slideshow-no-jquery.html
+            //Reference http://www.jssor.com/development/tool-slideshow-transition-viewer.html
+
+            var _SlideshowTransitions = [
+            //Fade in R
+            {$Duration: 1200, x: -0.3, $During: { $Left: [0.3, 0.7] }, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
+            //Fade out L
+            , { $Duration: 1200, x: 0.3, $SlideOut: true, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
+            ];
+
+            var options = {
+                $AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
+                $AutoPlaySteps: 1,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
+                $AutoPlayInterval: 4000,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
+                $PauseOnHover: 1,                               //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
+
+                $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
+                $SlideDuration: 500,                                //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
+                $MinDragOffsetToSlide: 20,                          //[Optional] Minimum drag offset to trigger slide , default value is 20
+                //$SlideWidth: 600,                                 //[Optional] Width of every slide in pixels, default value is width of 'slides' container
+                //$SlideHeight: 300,                                //[Optional] Height of every slide in pixels, default value is height of 'slides' container
+                $SlideSpacing: 0, 					                //[Optional] Space between each slide in pixels, default value is 0
+                $DisplayPieces: 1,                                  //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
+                $ParkingPosition: 0,                                //[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
+                $UISearchMode: 1,                                   //[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
+                $PlayOrientation: 1,                                //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
+                $DragOrientation: 3,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+
+                $SlideshowOptions: {                                //[Optional] Options to specify and enable slideshow or not
+                    $Class: $JssorSlideshowRunner$,                 //[Required] Class to create instance of slideshow
+                    $Transitions: _SlideshowTransitions,            //[Required] An array of slideshow transitions to play slideshow
+                    $TransitionsOrder: 1,                           //[Optional] The way to choose transition to play slide, 1 Sequence, 0 Random
+                    $ShowLink: true                                    //[Optional] Whether to bring slide link on top of the slider when slideshow is running, default value is false
+                },
+
+                $BulletNavigatorOptions: {                                //[Optional] Options to specify and enable navigator or not
+                    $Class: $JssorBulletNavigator$,                       //[Required] Class to create navigator instance
+                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
+                    $SpacingX: 10,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
+                    $SpacingY: 10                                    //[Optional] Vertical space between each item in pixel, default value is 0
+                },
+
+                $ArrowNavigatorOptions: {
+                    $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
+                    $ChanceToShow: 2,                                //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $AutoCenter: 2                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                },
+
+                $ThumbnailNavigatorOptions: {
+                    $Class: $JssorThumbnailNavigator$,              //[Required] Class to create thumbnail navigator instance
+                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $ActionMode: 0,                                 //[Optional] 0 None, 1 act by click, 2 act by mouse hover, 3 both, default value is 1
+                    $DisableDrag: true                              //[Optional] Disable drag or not, default value is false
+                }
+            };
+
+            var jssor_sliderb = new $JssorSlider$(containerId, options);
+            //responsive code begin
+            //you can remove responsive code if you don't want the slider scales while window resizes
+            function ScaleSlider() {
+                var parentWidth = jssor_sliderb.$Elmt.parentNode.clientWidth;
+                if (parentWidth)
+                    jssor_sliderb.$ScaleWidth(Math.min(parentWidth, 1600));
+                else
+                    $Jssor$.$Delay(ScaleSlider, 30);
+            }
+
+            ScaleSlider();
+            $Jssor$.$AddEvent(window, "load", ScaleSlider);
+
+            $Jssor$.$AddEvent(window, "resize", $Jssor$.$WindowResizeFilter(window, ScaleSlider));
+            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+            //responsive code end
+        };
+</script>
+</head>
+<body>
+<div class="skip-container cf">
+		<a class="skip-link screen-reader-text focusable" href="#content">&darr; Skip to Main Content</a>
+	</div><!-- .skip-container -->
+	<header id="header-full">
+		<div class="header-top">
+			<div class="header-top-left"></div>
+				<div class="header-top-right">
+					<ul>
+						<li><a href="#">Review</a></li>
+						<li><a href="#">Login</a></li>
+						</ul>
+							<div class="social-icons">
+								<a href="#"><img src="images/facebook-white-f.png" alt="fb" /></a>
+								<a href="#"><img src="images/google-plus.png" alt="g+" /></a>
+								<a href="#"><img src="images/instagram-white.png" alt="" /></a>
+								<a href="#"><img src="images/pintest.png" alt="pin" /></a>
+								<a href="#"><img src="images/twitter.png" alt="twt" /></a>
+							</div>
+				</div>
+		
+		</div>
+		<div class="header-bottom">
+		<div class="logo">
+		<a href="#"><img src="images/monketech-logo.png" alt="logo" /></a>
+ 		</div>
+		<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+                                                           
+                                                                <a class="screen-reader-text skip-link" href="#content">Skip to content</a>
+                                                                   <div class="nav-menu">
+																<ul>
+																<li class="page_item page-item-54 current"><a href="#grid">About</a></li>
+																<li class="page_item page-item-63"><a href="http://localhost/sandbox/?page_id=63">Checkout</a></li>
+																<li class="page_item page-item-24 page_item_has_children"><a href="http://localhost/sandbox/?page_id=24">Contact Us</a>
+																	<ul class='children'>
+																		<li class="page_item page-item-28"><a href="http://localhost/sandbox/?page_id=28">Our Location</a></li>
+																	</ul>
+																</li>
+																<li class="page_item page-item-80 current_page_item"><a href="http://localhost/sandbox/">Home</a></li>
+																<li class="page_item page-item-26 page_item_has_children"><a href="http://localhost/sandbox/?page_id=26">News</a>
+																	<ul class='children'>
+																	<li class="page_item page-item-18"><a href="http://localhost/sandbox/?page_id=18">History</a></li>
+																	<li class="page_item page-item-13"><a href="http://localhost/sandbox/?page_id=13">Our Company</a></li>
+																	<li class="page_item page-item-15 page_item_has_children"><a href="http://localhost/sandbox/?page_id=15">Our Staff</a>
+																			<ul class='children'><li class="page_item page-item-30"><a href="http://localhost/sandbox/?page_id=30">Employment Opportunities</a></li>
+																			</ul>
+																	</li>
+																	</ul>
+																</li>
+																<li class="page_item page-item-71"><a href="http://localhost/sandbox/?page_id=71">Portfolio</a></li>
+																	<li class="page_item page-item-13"><a href="http://localhost/sandbox/?page_id=13">Our Company</a></li>
+																</ul>
+																</div>
+                                                </nav>
+												<button id="mobile-menu-toggle" name="menu"></button>
+												    <nav id="mobile-menu">
+												
+                                                                <div class="nav-menu">
+																<ul class="menu">
+																<li class="page_item page-item-54 current"><a href="#grid" class="grid-outer">About</a></li>
+																<li class="page_item page-item-63"><a href="http://localhost/sandbox/?page_id=63">Checkout</a></li>
+																<li class="page_item page-item-24 page_item_has_children"><a href="http://localhost/sandbox/?page_id=24">Contact Us</a>
+																	<ul class='children'>
+																		<li class="page_item page-item-28"><a href="http://localhost/sandbox/?page_id=28">Our Location</a></li>
+																	</ul>
+																</li>
+																<li class="page_item page-item-80 current_page_item"><a href="http://localhost/sandbox/">Home</a></li>
+																<li class="page_item page-item-26 page_item_has_children"><a href="http://localhost/sandbox/?page_id=26">News</a>
+																	<ul class='children'>
+																	<li class="page_item page-item-18"><a href="http://localhost/sandbox/?page_id=18">History</a></li>
+																	<li class="page_item page-item-13"><a href="http://localhost/sandbox/?page_id=13">Our Company</a></li>
+																	<li class="page_item page-item-15 page_item_has_children"><a href="http://localhost/sandbox/?page_id=15">Our Staff</a>
+																			<ul class='children'><li class="page_item page-item-30"><a href="http://localhost/sandbox/?page_id=30">Employment Opportunities</a></li>
+																			</ul>
+																	</li>
+																	</ul>
+																</li>
+																<li class="page_item page-item-71"><a href="http://localhost/sandbox/?page_id=71">Portfolio</a></li>
+																</ul>
+																</div>
+												
+												
+												</nav>
+		</div>
+	
+	</header>
+	 <div id="sliderb_container">
+
+        <!-- Loading Screen -->
+        <div u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
+                background-color: #000; top: 0px; left: 0px;width: 100%;height:100%;">
+            </div>
+            <div style="position: absolute; display: block; background: url(../img/loading.gif) no-repeat center center;
+                top: 0px; left: 0px;width: 100%;height:100%;">
+            </div>
+        </div>
+
+        <!-- Slides Container -->
+        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1600px; height: 480px;
+            overflow: hidden;">
+            <div>
+                <img u=image src="images/01.jpg" />
+                <div u="thumb">Do you notice it is draggable by mouse/finger?</div>
+            </div>
+            <div>
+                <img u=image src="images/02.jpg" />
+                <div u="thumb">Did you drag by either horizontal or vertical?</div>
+            </div>
+            <div>
+                <img u=image src="images/03.jpg" />
+                <div u="thumb">Do you notice navigator responses when drag?</div>
+            </div>
+        </div>
+        
+        <!-- ThumbnailNavigator Skin Begin -->
+        <div u="thumbnavigator" class="sliderb-T" style="position: absolute; bottom: 0px; left: 0px; height:45px; width:600px;">
+            <div style="filter: alpha(opacity=40); opacity:0.4; position: absolute; display: block;
+                background-color: #000000; top: 0px; left: 0px; width: 100%; height: 100%;">
+            </div>
+            <!-- Thumbnail Item Skin Begin -->
+            <div u="slides">
+                <div u="prototype" style="position: absolute; width: 600px; height: 45px; top: 0; left: 0;">
+                    <div u="thumbnailtemplate" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; font-family: verdana; font-weight: normal; color:#fff; line-height: 45px; font-size:20px; padding-left:10px;"></div>
+                </div>
+            </div>
+            <!-- Thumbnail Item Skin End -->
+        </div>
+        <!-- ThumbnailNavigator Skin End -->
+        
+        <!-- Bullet Navigator Skin Begin -->
+        <!-- jssor slider bullet navigator skin 01 -->
+        <style>
+            /*
+            .jssorb01 div           (normal)
+            .jssorb01 div:hover     (normal mouseover)
+            .jssorb01 .av           (active)
+            .jssorb01 .av:hover     (active mouseover)
+            .jssorb01 .dn           (mousedown)
+            */
+            .jssorb01 div, .jssorb01 div:hover, .jssorb01 .av
+            {
+                filter: alpha(opacity=70);
+                opacity: .7;
+                overflow:hidden;
+                cursor: pointer;
+                border: #000 1px solid;
+            }
+            .jssorb01 div { background-color: gray; }
+            .jssorb01 div:hover, .jssorb01 .av:hover { background-color: #d3d3d3; }
+            .jssorb01 .av { background-color: #fff; }
+            .jssorb01 .dn, .jssorb01 .dn:hover { background-color: #555555; }
+        </style>
+        <!-- bullet navigator container -->
+        <div u="navigator" class="jssorb01" style="position: absolute; bottom: 16px; right: 10px;">
+            <!-- bullet navigator item prototype -->
+            <div u="prototype" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;"></div>
+        </div>
+        <!-- Bullet Navigator Skin End -->
+        
+        <!-- Arrow Navigator Skin Begin -->
+        <style>
+            /* jssor slider arrow navigator skin 05 css */
+            /*
+            .jssora05l              (normal)
+            .jssora05r              (normal)
+            .jssora05l:hover        (normal mouseover)
+            .jssora05r:hover        (normal mouseover)
+            .jssora05ldn            (mousedown)
+            .jssora05rdn            (mousedown)
+            */
+            .jssora05l, .jssora05r, .jssora05ldn, .jssora05rdn
+            {
+            	position: absolute;
+            	cursor: pointer;
+            	display: block;
+                background: url(../img/a17.png) no-repeat;
+                overflow:hidden;
+            }
+            .jssora05l { background-position: -10px -40px; }
+            .jssora05r { background-position: -70px -40px; }
+            .jssora05l:hover { background-position: -130px -40px; }
+            .jssora05r:hover { background-position: -190px -40px; }
+            .jssora05ldn { background-position: -250px -40px; }
+            .jssora05rdn { background-position: -310px -40px; }
+        </style>
+        <!-- Arrow Left -->
+        <span u="arrowleft" class="jssora05l" style="width: 40px; height: 40px; top: 123px; left: 8px;">
+        </span>
+        <!-- Arrow Right -->
+        <span u="arrowright" class="jssora05r" style="width: 40px; height: 40px; top: 123px; right: 8px">
+        </span>
+        <!-- Trigger -->
+        <script>
+            jssor_sliderb_starter('sliderb_container');
+        </script>
+    </div>
+
+	<div id="container">
+		<div id="home-search">
+		<form>
+		<input type="search" placeholder="Manufacturar" />
+		<input type="search" placeholder="Model" />
+		<input type="search" placeholder="Year" />
+		<input type="search" placeholder="Mileage" />
+		<input type="search" placeholder="Car type" />
+		<input type="submit" value="Search car" />
+ 		</form>
+	</div>
+		<div class="first-row clearfix">
+			<div class="content-data">
+				<h1>About us</h1>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum 
+					has been the industry's standard dummy text ever since the 1500s, when an unknown printer 
+					took a galley of type and scrambled it to make a type specimen book. It has survived not only 
+					five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+					took a galley of type and scrambled it to make a type specimen book. It has survived not only 
+					five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+					five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+					took a galley of type and scrambled it </p>
+			</div>
+			<div class="subscrib-box">
+				<h1>Newsletter</h1>
+					<p>Subscribe to our website to get latest information</p>
+						<form>
+						<input type="search" placeholder="Enter your E-mail" />
+						<input type="submit" value="Subscribe" />
+						</form>
+			</div>
+		</div>
+			<div class="second-row clearfix">
+				<div class="car-slider" >
+					<ul class="bxslider">
+						  <li><img src="images/volks.png" /></li>
+						  <li><img src="images/images (1).jpg" /></li>
+						  <li><img src="images/images.jpg" /></li>
+						</ul>
+
+						<div id="bx-pager">
+							<div class="post-car">
+							<a data-slide-index="0" href=""><img src="images/thumbs/small volks.png" /></a>
+							<h2> Volkswagen</h2>
+							<p>25 km /litre</p>
+							<p>Estimated price:4 L</p>
+							<p>Hyd</p>
+							<form>
+							<input type="submit" value="details" />
+							</form>
+							</div>
+							<div class="post-car">
+						  <a data-slide-index="1" href=""><img src="images/thumbs/small images (1).jpg" /></a>
+							<h2> bugatti</h2>
+							<p>25 km /litre</p>
+							<p>Estimated price:4 L</p>
+							<p>Hyd</p>
+							<form>
+							<input type="submit" value="details" />
+							</form>
+							</div>
+							<div class="post-car">
+						  <a data-slide-index="2" href=""><img src="images/thumbs/small images.jpg" /></a>
+							<h2> benz</h2>
+							<p>25 km /litre</p>
+							<p>Estimated price:4 L</p>
+							<p>Hyd</p>
+							<form>
+							<input type="submit" value="details" />
+							</form>
+							</div>
+							<div class="post-car">
+							<a data-slide-index="0" href=""><img src="images/thumbs/small volks.png" /></a>
+							<h2> Volkswagen</h2>
+							<p>25 km /litre</p>
+							<p>Estimated price:4 L</p>
+							<p>Hyd</p>
+							<form>
+							<input type="submit" value="details" />
+							</form>
+							</div>
+						</div>
+				</div>
+					<div class="event-data">
+							<div class="events">
+							<h1>Events</h1>
+									<div class="post-data">
+										<img src="images/thumbs/small volks.png" alt="" />
+										<h4>when a new car yet to realesed</h4>
+										<p class="small">Lorem Ipsum is simply dummy text of the printing and 
+														typesetting industry. Lorem Ipsum has been the 
+														industry's standard dummy text ever since  
+																</p>
+ 									</div>
+									<div class="post-data">
+										<img src="images/thumbs/small volks.png" alt="" />
+										<h4>when a new car yet to realesed</h4>
+										<p class="small">Lorem Ipsum is simply dummy text of the printing and 
+														typesetting industry. Lorem Ipsum has been the 
+														industry's standard dummy text ever since  
+																</p>
+ 									</div>
+									<input type="submit" value="Search car" />
+							</div>
+							<div class="book-test">
+								<h1>Book a test drive</h1>
+								<form>
+								E-mail<input type="text" placeholder="Enter your e-mail" />
+								Contact number<input type="text" placeholder="contact number" />
+								car<input type="text" placeholder="car" />
+								<input type="submit" value="Search car" />
+								</form>
+							</div>
+					</div>
+			</div>
+			<div class="third-row clearfix">
+			<div class="events compress">
+							<h1>Events</h1>
+									<div class="post-data">
+										<img src="images/thumbs/small volks.png" alt="" />
+										<h4>when a new car yet to realesed</h4>
+										<p class="small">Lorem Ipsum is simply dummy text of the printing and 
+														typesetting industry. Lorem Ipsum has been the 
+														industry's standard dummy text  
+																</p>
+ 									</div>
+									<div class="post-data">
+										<img src="images/thumbs/small volks.png" alt="" />
+										<h4>when a new car yet to realesed</h4>
+										<p class="small">Lorem Ipsum is simply dummy text of the printing and 
+														typesetting industry. Lorem Ipsum has been the 
+														industry's standard dummy text 
+																</p>
+ 									</div>
+									<input type="submit" value="Search car" />
+							</div>
+							<div class="events compress">
+							<h1>Company Services</h1>
+									<div class="post-data">
+										<img src="images/thumbs/small volks.png" alt="" />
+										<h4>when a new car yet to realesed</h4>
+										<p class="small">Lorem Ipsum is simply dummy text of the printing and 
+														typesetting industry. Lorem Ipsum has been the 
+														industry's standard dummy text  
+																</p>
+ 									</div>
+									<div class="post-data">
+										<img src="images/thumbs/small volks.png" alt="" />
+										<h4>when a new car yet to realesed</h4>
+										<p class="small">Lorem Ipsum is simply dummy text of the printing and 
+														typesetting industry. Lorem Ipsum has been the 
+														industry's standard dummy text   
+																</p>
+ 									</div>
+									<input type="submit" value="Search car" />
+							</div>
+							<div class="events compress">
+							<h1>Top Mileage</h1>
+									<div class="post-data">
+										<img src="images/thumbs/small volks.png" alt="" />
+										<h4>Duster</h4>
+										<p>25km /liter  </p>
+										<a href="#">Click here for complete information</a>
+ 									</div>
+									<div class="post-data">
+										<img src="images/thumbs/small volks.png" alt="" />
+										<h4>Duster</h4>
+										<p>25km /liter  </p>
+										<a href="#">Click here for complete information</a>
+ 									</div>
+									<input type="submit" value="Search car" />
+							</div>
+			
+			</div>
+	</div>
+	<footer id="footer-widgets" class="clearfix">
+ 
+
+
+<div id="footer-col2" class="footer-columns clearfix">
+ <aside id="pages-3" ><h1 class="widget-title">About Website</h1>		
+ <ul>
+			<li><a href="#">car</a></li>			
+			<li><a href="#">car</a></li>
+			<li><a href="#">car <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="#">car <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		</ul>
+		</aside>
+		</div>
+
+<div id="footer-col3" class="footer-columns clearfix">
+<div  id="meta-4"><h1 class="widget-title">About website</h1>			<ul>
+			<li><a href="#">car</a></li>			
+			<li><a href="#">car</a></li>
+			<li><a href="#">car </a></li>
+			<li><a href="#">car </a></li>
+		</ul>
+</div>
+</div>
+
+<div id="footer-col4" class="footer-columns clearfix">
+<aside class="widget widget_recent_entries" id="recent-posts-4">		<h1 class="widget-title">Services</h1>		<ul>
+					<li><a href="#">Car maintanance</a></li>
+					<li><a href="#">car service</a></li>
+					<li><a href="#">car</a></li>	
+				</ul>
+		</aside>
+ </div>
+  <div id="footer-col1" class="footer-columns clearfix">
+ <aside  id="archives-4"><h1 class="widget-title">Address</h1>		
+<p>Near pantaloons, Begumpet</p>
+</aside>
+</div>
+ </footer>
+ <div id="copy" class="clearfix">
+  <p class="small clearfix"><span class="alignleft copycontent">&copy; 2014, <a href="#">MonkeTech car</a></span><span class="alignright copycontent">Developed  by <a href="http://monketech.com/">Monke Tech</a></span></p>
+ 
+ </div>
+ 												
+
+</body>
+</html>
